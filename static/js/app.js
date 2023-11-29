@@ -155,18 +155,11 @@ function buildMetaData(sample) {
             d3.select("#sample-metadata").append("p").text(`${key}: ${valueData[key]}`);
         };
 
-        // Object.values(valueData).forEach(([key,value]) => {
-
-            // Log each key and value
-            // console.log(key,value);
-
-            
-        // });
     });  
 };
 
 // When dropdown changes
-function optionChange(newSample) {
+function optionChanged(newSample) {
     buildBar(newSample);
     buildBubble(newSample);
     buildMetaData(newSample);
