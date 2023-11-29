@@ -75,7 +75,7 @@ function buildBar(sample) {
         };
 
         // Create the plot
-        Plotly.newPlot("plot",data1,layout)
+        Plotly.newPlot("bar",data1,layout)
     });
 };
 
@@ -147,25 +147,29 @@ function buildMetaData(sample) {
         // First index
         let valueData = value[0];
 
-        //
+        // Creates the table
         d3.select("#sample-metadata").html("");
 
         // Key-Value Pair
-        Object.values(valueData).forEach(([key,value]) => {
+        for (key in valueData) {
+            d3.select("#sample-metadata").append("p").text(`${key}: ${valueData[key]}`);
+        };
+
+        // Object.values(valueData).forEach(([key,value]) => {
 
             // Log each key and value
-            console.log(key,value);
+            // console.log(key,value);
 
-            d3.select("#sample-metadata").append(p).text(`${key}: ${value}`);
-        });
+            
+        // });
     });  
 };
 
 // When dropdown changes
 function optionChange(newSample) {
-    buildBar(newSample),
-    buildBubble(newSample),
-    buildMetaData(newSample)
+    buildBar(newSample);
+    buildBubble(newSample);
+    buildMetaData(newSample);
 };
 
 // Call initialization
